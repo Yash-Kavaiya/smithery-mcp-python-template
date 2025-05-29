@@ -1,0 +1,79 @@
+name: smithery-mcp-python-template
+version: "0.1.0"
+description: "A Python template for MCP (Model Context Protocol) servers using FastMCP"
+
+# MCP Server Configuration
+mcp:
+  server_name: "Smithery MCP Server Python templates"
+  transport: "stdio"
+  
+  # Available commands
+  commands:
+    - name: "hello"
+      description: "A simple command that returns a greeting message"
+      parameters:
+        - name: "name"
+          type: "string"
+          description: "The name of the person to greet"
+          required: true
+      
+    - name: "add"
+      description: "A command that adds two integers"
+      parameters:
+        - name: "a"
+          type: "integer"
+          description: "The first integer"
+          required: true
+        - name: "b"
+          type: "integer"
+          description: "The second integer"
+          required: true
+
+# Runtime Configuration
+runtime:
+  language: "python"
+  version: ">=3.12"
+  entry_point: "main.py"
+  
+# Dependencies
+dependencies:
+  - "httpx>=0.28.1"
+  - "mcp[cli]>=1.9.1"
+
+# Build Configuration
+build:
+  dockerfile: "Dockerfile"
+  context: "."
+  
+# Development Configuration
+development:
+  hot_reload: true
+  debug: true
+  
+# Documentation
+documentation:
+  readme: "README.md"
+  
+# Metadata
+metadata:
+  author: "Yash Kavaiya"
+  license: "MIT"
+  repository: "https://github.com/Yash-Kavaiya/smithery-mcp-python-template"
+  keywords:
+    - "mcp"
+    - "model-context-protocol"
+    - "python"
+    - "fastmcp"
+    - "template"
+    - "smithery"
+
+# Environment Variables (if any)
+environment:
+  # Add any environment variables your MCP server needs
+  
+# Health Check Configuration
+health_check:
+  enabled: true
+  interval: "30s"
+  timeout: "10s"
+  retries: 3
